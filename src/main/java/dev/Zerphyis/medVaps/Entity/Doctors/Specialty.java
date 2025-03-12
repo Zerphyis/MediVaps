@@ -1,0 +1,21 @@
+package dev.Zerphyis.medVaps.Entity.Doctors;
+
+public enum Specialty {
+    CARDIOLOGIA,
+    DERMATOLOGIA ,
+    ORTOPEDIA ,
+    PEDIATRIA ,
+    NEUROLOGIA ,
+    OFTALMOLOGIA ,
+    OTORRINOLARINGOLOGIA ,
+    GINECOLOGIA ,
+    UROLOGIA ,
+    ENDOCRINOLOGIA ,
+    GASTROENTEROLOGIA ,
+    REUMATOLOGIA ,
+    NEFROLOGIA ,
+    PSIQUIATRIA ,
+    ONCOLOGIA ,
+    ALERGISTA ,
+    FONOAUDIOLOGIA ,
+}
