@@ -14,7 +14,7 @@ import java.util.List;
 @RequestMapping("consultas")
 public class AppointmentController {
     @Autowired
-   private AppointmentService appointmentService;
+    private AppointmentService appointmentService;
 
     @PostMapping()
     public ResponseEntity<DataAppointmentExit> scheduleAppointment(@RequestBody DataAppointmentEntry data) {
@@ -33,7 +33,7 @@ public class AppointmentController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DataAppointmentExit> findAppointmentById(@PathVariable("id")  Long id) {
+    public ResponseEntity<DataAppointmentExit> findAppointmentById(@PathVariable("id") Long id) {
         try {
             DataAppointmentExit appointment = appointmentService.findAppointmentById(id);
             return new ResponseEntity<>(appointment, HttpStatus.OK);
@@ -53,12 +53,22 @@ public class AppointmentController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAppointment(@PathVariable("id")  Long id) {
+    public ResponseEntity<Void> deleteAppointment(@PathVariable("id") Long id) {
         try {
             appointmentService.deleteAppointment(id);
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/export")
+    public ResponseEntity<String> exportAppointmentsToCSV(@RequestParam int year, @RequestParam int month) {
+        try {
+            appointmentService.exportAppointmentsToCSV(year, month);
+            return ResponseEntity.ok("Exportação para CSV concluída.");
+        } catch (Exception e) {
+            return ResponseEntity.status(500).body("Erro ao exportar os agendamentos.");
         }
     }
 }
