@@ -1,4 +1,4 @@
-package dev.Zerphyis.medVaps.Entity.Doctors;
+package dev.Zerphyis.medVaps.Entity.Specialty;
 
 public enum Specialty {
     CARDIOLOGIA,

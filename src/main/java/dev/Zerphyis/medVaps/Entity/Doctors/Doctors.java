@@ -1,6 +1,7 @@
 package dev.Zerphyis.medVaps.Entity.Doctors;
 
 import dev.Zerphyis.medVaps.Entity.Records.DataDoctors;
+import dev.Zerphyis.medVaps.Entity.Specialty.Specialty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
