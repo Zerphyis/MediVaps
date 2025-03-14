@@ -1,6 +1,6 @@
 package dev.Zerphyis.medVaps.Security;
 
-import dev.Zerphyis.medVaps.Repositorys.LoginRepository;
+import dev.Zerphyis.medVaps.Service.LoginService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -17,9 +17,10 @@ import java.io.IOException;
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
     @Autowired
-    ServiceToken tokenService;
+    private ServiceToken tokenService;
+
     @Autowired
-    LoginRepository repository;
+    private LoginService loginService;
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
@@ -27,7 +28,7 @@ public class SecurityFilter extends OncePerRequestFilter {
         if (token != null) {
             String login = tokenService.validateToken(token);
             if (!login.isEmpty()) {
-                UserDetails user = repository.findByEmail(login);
+                UserDetails user = loginService.loadUserByUsername(login);
                 if (user != null) {
                     var authentication = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
                     SecurityContextHolder.getContext().setAuthentication(authentication);
