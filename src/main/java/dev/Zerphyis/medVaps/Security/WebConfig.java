@@ -18,7 +18,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class WebConfig {
     @Autowired
-    SecurityFilter securityFilter;
+    private SecurityFilter securityFilter;
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
@@ -28,9 +28,9 @@ public class WebConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/login/auth").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login/register").permitAll()
-                        .requestMatchers("/**").hasRole("ADMIN")
-                        .requestMatchers("/medicos/**").hasRole("MANAGER")
-                        .requestMatchers("/pacientes/**").hasRole("DOCTOR")
+                        .requestMatchers("/**").hasAuthority("ADMIN")
+                        .requestMatchers("/medicos/**").hasAuthority("MANAGER")
+                        .requestMatchers("/pacientes/**").hasAuthority("DOCTOR")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
