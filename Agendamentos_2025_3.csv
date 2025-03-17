@@ -1,0 +1,5 @@
+"ID","Data","Médico","Paciente","Especialidade","Status"
+"1","2025-03-15","Dr. João Silva","Maria Oliveira","CARDIOLOGIA","AGENDADO"
+"3","2025-03-17","Dr. Carlos Pereira","Ana Lima","NEUROLOGIA","CANCELADO"
+"4","2025-03-18","Dr. Ana Costa","João Silva","PEDIATRIA","AGENDADO"
+"6","2025-03-20","Dr. João Silva","Otavio Nogueria","CARDIOLOGIA","AGENDADO"
