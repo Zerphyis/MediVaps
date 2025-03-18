@@ -27,9 +27,9 @@ public class WebConfig {
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(HttpMethod.POST, "/login/auth").permitAll()
                         .requestMatchers(HttpMethod.POST, "/login/register").permitAll()
+                        .requestMatchers("/**").hasAuthority("ROLE_ADMIN")
                         .requestMatchers("/medicos/**").hasAuthority("ROLE_MANAGER")
                         .requestMatchers("/pacientes/**").hasAuthority("ROLE_DOCTOR")
-                        .requestMatchers("/**").hasAuthority("ADMIN")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class);
