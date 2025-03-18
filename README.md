@@ -8,7 +8,8 @@
 - **Spring Data JPA**: Para manipulação de dados em banco de dados relacional.
 - **Spring Security**: Para segurança e autenticação de usuários.
 - **MySQL**: Banco de dados utilizado para persistência de dados.
-- **Java JWT**: Para geração de tokens JWT para autenticação.
+-  **JWT** (Autenticação baseada em token)
+-  **Spring Mail Sender** Para mandar email com a aplicação
 - **OpenCSV**: Para leitura e escrita de arquivos CSV.
 - **Spring Validation**: Para validação de dados de entrada.
 - **Spring Boot Test**: Para realizar testes na aplicação.
@@ -36,6 +37,14 @@ spring.datasource.username=seu_usuario
 spring.datasource.password=sua_senha
 spring.jpa.hibernate.ddl-auto=update
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+
+spring.mail.host=smtp.gmail.com
+spring.mail.port=587
+spring.mail.username=seu_email_para_envio
+spring.mail.password=senha_gerada_para_envio
+spring.mail.properties.mail.smtp.auth=true
+spring.mail.properties.mail.smtp.starttls.enable=true
+api.security.token.secret=${JWT_SECRET:my-secret-key}
 
 
 mvn spring-boot:run
